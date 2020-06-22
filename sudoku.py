@@ -2,6 +2,7 @@
 #
 # Author: Nicholas O'Kelley
 # Date: June 20, 2020
+import time
 
 def locate(board):
     #print("Locating valid entry...")
@@ -156,8 +157,10 @@ def main():
     text_file = ("./unsolved_boards/" + input("Enter file: "))
     message, board = read_file(text_file)
     message = message + display_board(board)
+    start = time.time()
     result = solved_board(board)
-    message = message + process_output(board, result)
+    end = "Finished in " + str(time.time() - start)
+    message = message + process_output(board, result) + end
     write_file(message)
 
 
